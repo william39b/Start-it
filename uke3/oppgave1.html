@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>oppgave1</title>
+  </head>
+  <body>
+    <div id="mainDiv"></div>
+    <button onclick="color1('red', 100, 'Red')">Test 1</button>
+    <button onclick="color1('blue', 50, 'Blue')">Test 2</button>
+
+    <script>
+      var outputDiv = document.getElementById("mainDiv");
+      function color1(color, height, text) {
+        outputDiv.innerHTML = /*HTML*/ `
+        <div style="color: white; background-color: ${color}; width: 100%; height: ${height}px;">${text}</div>
+        `;
+      }
+    </script>
+  </body>
+</html>

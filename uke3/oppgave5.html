@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="keys">
+      <div onclick="pushedLetter(this)">A</div>
+      <div onclick="pushedLetter(this)">B</div>
+      <div onclick="pushedLetter(this)">C</div>
+      <div onclick="pushedLetter(this)">D</div>
+      <div onclick="pushedLetter(this)">E</div>
+      <div onclick="pushedLetter(this)">F</div>
+      <div onclick="pushedLetter(this)">G</div>
+      <div onclick="pushedLetter(this)">H</div>
+      <div onclick="pushedLetter(this)">I</div>
+      <div onclick="pushedLetter(this)">J</div>
+      <div onclick="pushedLetter(this)">K</div>
+      <div onclick="pushedLetter(this)">L</div>
+      <div onclick="pushedLetter(this)">M</div>
+      <div onclick="pushedLetter(this)">N</div>
+      <div onclick="pushedLetter(this)">O</div>
+      <div onclick="pushedLetter(this)">P</div>
+      <div onclick="pushedLetter(this)">Q</div>
+    </div>
+    <hr />
+    <div id="newWord"></div>
+  </body>
+  <script>
+    function pushedLetter(htmlElement) {
+      //let letterPressed = htmlElement.innerHTML;
+      document.getElementById("newWord").innerHTML += `
+      <div>${htmlElement.innerHTML}</div>`;
+    }
+  </script>
+  <style>
+    .keys {
+      display: flex;
+      width: 70%;
+      justify-content: space-between;
+    }
+    #newWord {
+      display: flex;
+    }
+  </style>
+</html>

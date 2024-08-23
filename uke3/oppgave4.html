@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="trafficLight">
+      <div id="red" class="red circle"></div>
+      <div id="orange" class="orange circle"></div>
+      <div id="green" class="green circle"></div>
+    </div>
+
+    <button onclick="activeLight('green', 'orange', 'red', 'red')">Red</button>
+    <button onclick="activeLight('green','green', 'red', 'orange')">
+      Red & Orange
+    </button>
+    <button onclick="activeLight('red', 'orange', 'green', 'green')">
+      Green
+    </button>
+    <button onclick="activeLight('red', 'green', 'orange', 'orange')">
+      Orange
+    </button>
+    <button onclick="lightTimer()">Automatic</button>
+  </body>
+
+  <script>
+    let lastColor = "red";
+
+    function lightTimer() {
+      setTimeout(activeRed, 1000);
+    }
+
+    function activeRed() {
+      activeLight("green", "orange", "red", "red");
+      setTimeout(activeRedAndOrange, 2000);
+    }
+
+    function activeRedAndOrange() {
+      activeLight("green", "green", "red", "orange");
+      setTimeout(activeOrange, 1000);
+      lastColor = "red";
+    }
+
+    function activeOrange() {
+      activeLight("red", "green", "orange", "orange");
+      if (lastColor == "green") {
+        setTimeout(activeRed, 1000);
+      }
+      if (lastColor == "red") {
+        setTimeout(activeGreen, 1000);
+      }
+    }
+
+    function activeGreen() {
+      activeLight("red", "orange", "green", "green");
+      setTimeout(activeGreenAndOrange, 2000);
+    }
+
+    function activeGreenAndOrange() {
+      activeLight("red", "red", "green", "orange");
+      setTimeout(activeOrange, 1000);
+      lastColor = "green";
+    }
+
+    function activeLight(divId1, divId2, divId3, divId4) {
+      document.getElementById(divId1).classList.remove("active");
+      document.getElementById(divId2).classList.remove("active");
+      document.getElementById(divId3).classList.add("active");
+      document.getElementById(divId4).classList.add("active");
+    }
+  </script>
+
+  <style>
+    #trafficLight {
+      width: 210px;
+      height: 700px;
+      background-color: #4e4c4c;
+      border-radius: 5em;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      padding: 15px;
+    }
+    .red {
+      background-color: red;
+      opacity: 10%;
+    }
+    .orange {
+      background-color: orange;
+      opacity: 10%;
+    }
+    .green {
+      background-color: green;
+      opacity: 10%;
+    }
+    .circle {
+      box-shadow: -5px 10px 20px 10px black inset;
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+    }
+    .active {
+      opacity: 100%;
+    }
+  </style>
+</html>

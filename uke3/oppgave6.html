@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="mainDiv">
+      <button onclick="lightSwitch()">Light</button>
+      <div id="lightBulb"></div>
+    </div>
+  </body>
+  <script>
+    let light = false;
+
+    function lightSwitch() {
+      light = !light;
+      if (light)
+        document.getElementById("lightBulb").style.backgroundColor = "yellow";
+      else document.getElementById("lightBulb").style.backgroundColor = "gray";
+    }
+  </script>
+  <style>
+    #lightBulb {
+      background-color: gray;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+    }
+  </style>
+</html>

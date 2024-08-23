@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body id="main">
+    <div class="mainDiv">
+      <div
+        id="pinkBox"
+        class="pink box"
+        onclick="changeColor('pink', 'pinkBox')"
+      >
+        Pink
+      </div>
+
+      <div id="redBox" class="red box" onclick="changeColor('red', 'redBox')">
+        Red
+      </div>
+
+      <div
+        id="blueBox"
+        class="blue box"
+        onclick="changeColor('blue', 'blueBox')"
+      >
+        Blue
+      </div>
+    </div>
+
+    <div class="btn">
+      <button class="btn" onclick="changeBackground()">Change color</button>
+    </div>
+  </body>
+
+  <script>
+    let valg1 = "";
+    let valg2 = "pinkBox";
+
+    function selected() {
+      return valg2;
+    }
+
+    function changeColor(color, select) {
+      selected();
+      document.getElementById(valg2).classList.remove("border");
+
+      valg1 = color;
+      valg2 = select;
+
+      document.getElementById(select).classList.add("border");
+    }
+
+    function changeBackground() {
+      selected();
+      document.getElementById("main").style.backgroundColor = valg1;
+      document.getElementById(valg2).classList.remove("border");
+    }
+  </script>
+  <style>
+    body {
+      height: 100%;
+      width: 100%;
+    }
+    .box {
+      height: 100px;
+      width: 100px;
+    }
+    .border {
+      border: 5px solid black;
+    }
+
+    .pink {
+      background-color: pink;
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .blue {
+      background-color: blue;
+      color: white;
+    }
+
+    .mainDiv {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      text-align: center;
+    }
+    .btn {
+      padding-top: 40px;
+      font-size: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+    }
+  </style>
+</html>

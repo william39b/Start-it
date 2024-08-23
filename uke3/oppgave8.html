@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="points">Points: 0</div>
+    <div id="num1">0</div>
+    <input type="text" id="inputText" />
+    <div id="num2">0</div>
+    <div>
+      <button id="submitBtn" onclick="submit()">Submit</button>
+      <button id="resetBtn" onclick="reset()">Reset</button>
+    </div>
+  </body>
+  <script>
+    let txt1 = document.getElementById("inputText");
+    let btn1 = document.getElementById("submitBtn");
+    let points = document.getElementById("points");
+
+    let curentPoints = 0;
+    let out;
+    let rng1;
+    let rng2;
+
+    function reset() {
+      rng1 = Math.floor(Math.random() * 10);
+      document.getElementById("num1").innerHTML = rng1;
+
+      rng2 = Math.floor(Math.random() * 10);
+      document.getElementById("num2").innerHTML = rng2;
+
+      return rng1, rng2;
+    }
+
+    function submit() {
+      out = txt1.value;
+
+      if (out == "<" || ">") {
+        if (out == "<") {
+          if (rng1 <= rng2) {
+            curentPoints++;
+            points.innerHTML = `<div>Points: ${curentPoints}</div>`;
+          } else {
+            curentPoints--;
+            points.innerHTML = `<div>Points: ${curentPoints}</div>`;
+          }
+        }
+
+        if (out == ">") {
+          if (rng1 >= rng2) {
+            curentPoints++;
+            points.innerHTML = `<div>Points: ${curentPoints}</div>`;
+          } else {
+            curentPoints--;
+            points.innerHTML = `<div>Points: ${curentPoints}</div>`;
+          }
+        }
+      }
+    }
+  </script>
+</html>
