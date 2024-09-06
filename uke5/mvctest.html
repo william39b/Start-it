@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script>
+    //Model
+    const app = document.getElementById("app");
+    let aName;
+    let town;
+    let food;
+
+    updateView();
+    function updateView() {
+      app.innerHTML = /*HTML*/ `
+        <div>Hei jeg heter ${aName ?? "..hær kommer et navn"}</div>
+        <div>Jeg bor i ${town ?? "..hær kommer et sted"}</div>
+        <div>Min favorit mat er ${food ?? "..hær kommer mat"}</div>
+
+        Navn:
+        <br/>
+        <input type="text" oninput="aName=this.value" value="${aName ?? ""}" />
+        <br/>
+        By:
+        <br/>
+        <input type="text" oninput="town=this.value" value="${town ?? ""}"/>
+        <br/>
+        Mat:
+        <br/>
+        <input type="text" oninput="food=this.value" value="${food ?? ""}"/>
+        <br/>
+        <button onclick="updateView()">Update</button>
+        
+      `;
+      console.log(aName);
+    }
+  </script>
+</html>

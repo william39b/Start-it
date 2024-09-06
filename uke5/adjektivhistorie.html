@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script>
+    // Model
+    const app = document.getElementById("app");
+    let word1;
+    let word2;
+    let word3;
+    let word4;
+
+    updateView();
+    function updateView() {
+      app.innerHTML = /*HTML*/ `
+      <p>Once, there was a 
+        ${word1 ?? "___"}  
+        ${word2 ?? "___"} that 
+        ${word3 ?? "___"} in the 
+        ${word4 ?? "___"}
+      </p>
+
+      <div class="word" onclick="change(this.innerHTML)">Green</div>
+      <div class="word" onclick="change(this.innerHTML)">Red</div>
+      <div class="word" onclick="change(this.innerHTML)">Cat</div>
+      <div class="word" onclick="change(this.innerHTML)">Man</div>
+      <div class="word" onclick="change(this.innerHTML)">Started</div>
+      <div class="word" onclick="change(this.innerHTML)">Jumped</div>
+      <div class="word" onclick="change(this.innerHTML)">Pool</div>
+      <div class="word" onclick="change(this.innerHTML)">Wall</div>
+      `;
+    }
+
+    function change(newWord) {
+      if (word1 == undefined) word1 = newWord;
+      else if (word2 == undefined) word2 = newWord;
+      else if (word3 == undefined) word3 = newWord;
+      else if (word4 == undefined) word4 = newWord;
+      updateView();
+    }
+  </script>
+  <style>
+    .word {
+      background-color: aqua;
+      height: 90px;
+      width: 150px;
+      border-radius: 50%;
+      font-size: 25px;
+      text-align: center;
+      vertical-align: middle;
+      line-height: 90px;
+      margin-bottom: 5px;
+    }
+
+    p {
+      font-size: 25px;
+      border: 5px dotted orange;
+      width: 650px;
+    }
+  </style>
+</html>
