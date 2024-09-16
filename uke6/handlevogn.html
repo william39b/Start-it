@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script>
+    const app = document.getElementById("app");
+    let basket = [];
+    let item;
+
+    updateView();
+    function updateView() {
+      app.innerHTML = /*HTML*/ `
+        <input type="text" oninput="item=this.value"><br/>
+        <button onclick="basket.push(item); updateView()">Add to Cart</button>
+        `;
+      for (let i = 0; i < basket.length; i++) {
+        app.innerHTML += `<li>${basket[i]}</li>`;
+      }
+    }
+  </script>
+</html>

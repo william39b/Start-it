@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .ball {
+        height: 300px;
+        width: 300px;
+        border-radius: 50%;
+        color: white;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script>
+    const app = document.getElementById("app");
+    let text;
+    let ball = [
+      "Yes",
+      "Reply hazy, try again",
+      "Ask again later",
+      "Better not tell you now",
+      "Cannot predict now",
+      "Concentrate and ask again",
+      "Don’t count on it",
+      "My reply is no",
+      "My sources say no",
+      "Outlook not so good",
+      "Very doubtful",
+    ];
+
+    updateView();
+    function updateView() {
+      app.innerHTML = /*HTML*/ `
+        <div onclick="updateView()" class="ball">
+            <div>${ball[text]}</div>
+        </div>
+        `;
+      text = Math.floor(Math.random() * ball.length);
+    }
+  </script>
+</html>

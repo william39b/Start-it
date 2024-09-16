@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script>
+    let app = document.getElementById("app");
+    let numbers = [1, 2, 3];
+    updateView();
+    function updateView() {
+      for (let i = 0; i < numbers.length; i++) {
+        console.log(`på ${i} ser jeg ${numbers[i]}`);
+        app.innerHTML += `<div>på ${i} ser jeg ${numbers[i]}</div>`;
+      }
+    }
+  </script>
+</html>

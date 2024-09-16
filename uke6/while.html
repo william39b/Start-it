@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script>
+    let number1 = 0;
+    let number2 = 1;
+    let equal;
+    let app = document.getElementById("app");
+
+    math();
+    function math() {
+      while (number1 != number2) {
+        number1 = Math.ceil(Math.random() * 5);
+        number2 = Math.ceil(Math.random() * 5);
+        equal = number1 == number2 ? "Equal numbers found" : "Not equal";
+
+        app.innerHTML += `
+          <div>${number1} ${number2} ${equal}</div>
+        `;
+      }
+    }
+  </script>
+</html>
