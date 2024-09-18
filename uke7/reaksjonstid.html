@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: darkslategrey;
+        color: white;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 10% 10% 10% 10% 10%;
+        row-gap: 5%;
+
+        height: 800px;
+      }
+      .lamps {
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+        background-color: darkgray;
+      }
+      .lightOn {
+        background-color: yellow;
+      }
+
+      #endScreen {
+        font-size: 30px;
+        size: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script>
+    const app = document.getElementById("app");
+    const grid = document.getElementsByClassName("lamps");
+    let math;
+    let startTime;
+    let finishTime;
+    let spentMilliseconds;
+    let spentSeconds;
+
+    updateView();
+    function updateView() {
+      app.innerHTML = /*HTML*/ `
+      <div class="grid" >
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+        <div class="lamps"></div>
+      </div>
+    `;
+      lamp();
+    }
+
+    function lamp() {
+      startTime = new Date().getTime();
+      math = Math.floor(Math.random() * 24);
+      grid[math].addEventListener("click", score);
+      return grid[math].classList.add("lightOn");
+    }
+    function score() {
+      finishTime = new Date().getTime();
+      spentMilliseconds = Math.floor(finishTime - startTime);
+      console.log(finishTime - startTime);
+      spentSeconds = spentMilliseconds / 1000;
+      app.innerHTML = /*HTML*/ `
+        <div id="endScreen">
+            <div>Your reaction time was: <b>${spentSeconds}</div>
+            <button onclick="updateView()">Retry</button>
+        </div>
+      `;
+    }
+  </script>
+</html>

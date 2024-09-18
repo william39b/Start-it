@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script>
+    const app = document.getElementById("app");
+    let email = "";
+    let test1 = false;
+    let test2 = false;
+    let test3 = false;
+    let at;
+
+    updateView();
+    function updateView() {
+      app.innerHTML = /*HTML*/ `
+        <input type="text" oninput="email=this.value" value="${email ?? ""}"/>
+        <button onclick="checkValue(); updateView()">Submit</button>
+        <div>Teksten inneholder @: ${test1}</div>
+        <div>Teksten har ikke mellomrom: ${test2}</div>
+        <div>Teksten inneholder et punktum etter @: ${test3}</div>
+      `;
+    }
+
+    function checkValue() {
+      at = email.indexOf("@");
+
+      test1 = email.includes("@") ? true : false;
+      test2 = !email.includes(" ") ? true : false;
+      test3 = email.includes(".", at) ? true : false;
+
+      return test1, test2, test3;
+    }
+  </script>
+</html>
