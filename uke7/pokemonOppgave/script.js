@@ -1,5 +1,3 @@
-let pikachuName = "Pikachu";
-
 let pikachu = {
   name: "Pikachu",
   health: 45,
@@ -37,13 +35,16 @@ let player = {
   pokemon: [],
 };
 
+let throwBall = false;
 let app = document.getElementById("app");
 let show = document.getElementById("show");
 
 updateView();
-
 function updateView() {
-  getRandomPokemon();
+  if (!throwBall) {
+    getRandomPokemon();
+  }
+
   app.innerHTML = /*HTML*/ `
   <div class="container">
     <div class="opposingPokemon">
@@ -59,7 +60,7 @@ function updateView() {
         </div>
 
         <div class="buttonContainer">
-            <button onclick="catchPokemon()">Fang</button>    
+            <button onclick="trainerThrow()">Fang</button>    
             <button onclick="updateView()">Finn en annen</button>
             <button onclick="showPokemonView()">Vis dine pokemon</button>       
         </div>
@@ -82,6 +83,8 @@ function caughtPokemonView() {
 }
 
 function catchPokemon() {
+  throwBall = false;
+  player.image = "Images/pokemonTrainerIdle.png";
   player.pokemon.push(randomPokemon);
   caughtPokemonView();
 }
@@ -97,7 +100,6 @@ function showPokemonView() {
   app.innerHTML += `
   <button onclick="updateView()">Finn en annen</button>
   `;
-  console.log(player.pokemon);
 }
 
 function getRandomPokemon() {
@@ -110,4 +112,11 @@ function removeStyle() {
   app.style.alignItems = "left";
   app.style.height = "5px";
   app.style.padding = "4px";
+}
+
+function trainerThrow() {
+  throwBall = true;
+  player.image = "Images/pokemonTrainerThrow.png";
+  updateView();
+  setTimeout(catchPokemon, 750);
 }
