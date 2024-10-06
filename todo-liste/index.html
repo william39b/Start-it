@@ -29,14 +29,15 @@
     </style>
   </head>
   <body>
-    <input type="date" />
     <table id="tasksTable"></table>
     <p>
       <div>
        Oppgave: <br>
        <input type="text" id="taskDescription" /><br/>
        Navn: <br>
-       <input type="text" id="person" />
+       <input type="text" id="person" /><br/>
+       Dato: <br>
+       <input type="date" id="date"/>
       </div>
       
       <button onclick="addTask()">Legg til oppgave</button>
@@ -45,9 +46,9 @@
     <script>
       // model
       let tasks = [
-        { description: "Handle til middag", isDone: true, person: "Jhon" },
-        { description: "Lage middag", isDone: false, person: "Jhon" },
-        { description: "Spise middag", isDone: false, person: "Jhon" },
+        { description: "Handle til middag", isDone: false, person: "Jhon", date: formatDate(), completeDate: "" },
+        { description: "Lage middag", isDone: false, person: "Jhon", date: formatDate(), completeDate: "" },
+        { description: "Spise middag", isDone: false, person: "Doe", date: formatDate(), completeDate: "" },
       ];
 
       //view
@@ -60,6 +61,8 @@
             <th>Gjort</th>
             <th></th>
             <th>Person</th>
+            <th>Fullført Dato</th>
+            <th>Frist Dato</th>
         </tr>`;
         for (let i = 0; i < tasks.length; i++) {
           html += createHtmlRow(i);
@@ -80,6 +83,8 @@
                     <button onclick="editTask(${i})">Rediger</button>
                 </td>
                 <td>${task.person}</td>
+                <td>${task.completeDate}</td>
+                <td>${task.date}</td>
             </tr>
         `;
 
@@ -91,6 +96,8 @@
                     <button onclick="updateTask(${i})">Lagre</button>
                 </td>
                 <td><input id="editPerson${i}" type="text" value="${task.person}"/></td>
+                <td id="complete" >${task.completeDate}</td>
+                <td><input id="editDate${i}" type="date" value="${task.date}"/></td>
             </tr>
         `;
       }
@@ -98,11 +105,17 @@
       // controller
       let taskDescriptionInput = document.getElementById("taskDescription");
       let personInput = document.getElementById("person");
+      let dateInput = document.getElementById("date");
+      
+      
+
       function addTask() {
         tasks.push({
           description: taskDescriptionInput.value,
           person: personInput.value,
+          date: formatDate(dateInput.value),
           isDone: false,
+          completeDate: "",
         });
         taskDescriptionInput.value = "";
         personInput.value = "";
@@ -111,7 +124,17 @@
 
       function changeIsDone(checkbox, index) {
         tasks[index].isDone = checkbox.checked;
+        taskComplete(index)
         view();
+      }
+
+      // task complete date
+      function taskComplete(index) {
+        if (tasks[index].isDone) {
+          return tasks[index].completeDate = formatDate();
+        }
+        return tasks[index].completeDate = "";
+  
       }
 
       function deleteTask(index) {
@@ -127,14 +150,32 @@
       function updateTask(index) {
         const id1 = `editDescription${index}`;
         const id2 = `editPerson${index}`;
+        const id3 = `editDate${index}`;
         const inputTag1 = document.getElementById(id1);
         const inputTag2 = document.getElementById(id2);
+        const inputTag3 = document.getElementById(id3);
 
+        
         tasks[index].description = inputTag1.value;
         tasks[index].person = inputTag2.value;
+        tasks[index].date = formatDate(inputTag3.value);
         tasks[index].editMode = false;
         view();
       }
+
+      // norwegian date format
+      function formatDate(f1) {
+        if (f1) {
+          let newFormat = new Date(f1).toLocaleDateString('no-no', 
+        { weekday:"long", year:"numeric", month:"short", day:"numeric"});
+        return newFormat;
+        }
+
+        let newFormat = new Date().toLocaleDateString('no-no', 
+        { weekday:"long", year:"numeric", month:"short", day:"numeric"});
+        return newFormat;
+      }
+
     </script>
   </body>
 </html>
