@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      table,
+      tr,
+      th,
+      td {
+        border: 1px solid gray;
+        border-collapse: collapse;
+      }
+
+      td,
+      th {
+        padding: 4px;
+      }
+
+      th {
+        background-color: blue;
+        color: white;
+      }
+
+      tr:nth-child(even) {
+        background: antiquewhite;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="date" />
+    <table id="tasksTable"></table>
+    <p>
+      <div>
+       Oppgave: <br>
+       <input type="text" id="taskDescription" /><br/>
+       Navn: <br>
+       <input type="text" id="person" />
+      </div>
+      
+      <button onclick="addTask()">Legg til oppgave</button>
+    </p>
+
+    <script>
+      // model
+      let tasks = [
+        { description: "Handle til middag", isDone: true, person: "Jhon" },
+        { description: "Lage middag", isDone: false, person: "Jhon" },
+        { description: "Spise middag", isDone: false, person: "Jhon" },
+      ];
+
+      //view
+      let tasksTable = document.getElementById("tasksTable");
+      view();
+      function view() {
+        let html = /*html*/ `
+        <tr>
+            <th>Oppgave</th>
+            <th>Gjort</th>
+            <th></th>
+            <th>Person</th>
+        </tr>`;
+        for (let i = 0; i < tasks.length; i++) {
+          html += createHtmlRow(i);
+        }
+        tasksTable.innerHTML = html;
+      }
+
+      function createHtmlRow(i) {
+        const task = tasks[i];
+        const checkedHtml = task.isDone ? "checked" : "";
+        if (!task.editMode)
+          return /*html*/ `
+            <tr>
+                <td>${task.description}</td>
+                <td><input onchange="changeIsDone(this, ${i})" type="checkbox" ${checkedHtml}/></td>
+                <td>
+                    <button onclick="deleteTask(${i})">Slett</button>
+                    <button onclick="editTask(${i})">Rediger</button>
+                </td>
+                <td>${task.person}</td>
+            </tr>
+        `;
+
+        return /*html*/ `
+            <tr>
+                <td><input id="editDescription${i}" type="text" value="${task.description}"/></td>
+                <td><input onchange="changeIsDone(this, ${i})" type="checkbox" ${checkedHtml}/></td>
+                <td>
+                    <button onclick="updateTask(${i})">Lagre</button>
+                </td>
+                <td><input id="editPerson${i}" type="text" value="${task.person}"/></td>
+            </tr>
+        `;
+      }
+
+      // controller
+      let taskDescriptionInput = document.getElementById("taskDescription");
+      let personInput = document.getElementById("person");
+      function addTask() {
+        tasks.push({
+          description: taskDescriptionInput.value,
+          person: personInput.value,
+          isDone: false,
+        });
+        taskDescriptionInput.value = "";
+        personInput.value = "";
+        view();
+      }
+
+      function changeIsDone(checkbox, index) {
+        tasks[index].isDone = checkbox.checked;
+        view();
+      }
+
+      function deleteTask(index) {
+        tasks.splice(index, 1);
+        view();
+      }
+
+      function editTask(index) {
+        tasks[index].editMode = true;
+        view();
+      }
+
+      function updateTask(index) {
+        const id1 = `editDescription${index}`;
+        const id2 = `editPerson${index}`;
+        const inputTag1 = document.getElementById(id1);
+        const inputTag2 = document.getElementById(id2);
+
+        tasks[index].description = inputTag1.value;
+        tasks[index].person = inputTag2.value;
+        tasks[index].editMode = false;
+        view();
+      }
+    </script>
+  </body>
+</html>
