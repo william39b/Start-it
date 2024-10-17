@@ -1,0 +1,21 @@
+body{
+    background-color: #927df1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.arrow{
+    height: 150px;
+    cursor: pointer;
+}
+
+.left{
+    transform: rotate(180deg);
+}
