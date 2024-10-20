@@ -18,9 +18,23 @@ const getFirstSlide = () => {
     slideNumber = 1;
 };
 
+const getLastSlide = () => {
+    slider.style.transform = `translateX(-${(length - 1) * 800}px)`;
+    slideNumber = length;
+};
+
+const prevSlide = () => {
+    slider.style.transform = `translateX(-${(slideNumber - 2) * 800}px)`;
+    slideNumber--;
+};
+
 right.addEventListener("click", () => {
     slideNumber < length ? nextSlide() : getFirstSlide();
     console.log(slideNumber);
+});
+
+left.addEventListener("click", () => {
+    slideNumber > 1 ? prevSlide() : getLastSlide();
 });
 
 //const app = document.getElementById("app");
