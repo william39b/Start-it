@@ -1,0 +1,23 @@
+table {
+    width: 50%;
+    border-collapse: collapse;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+td {
+    border: 1px solid gray;
+    border-collapse: collapse;
+}
+
+tr:nth-child(even) {
+background: antiquewhite;
+}
+
+.checkbox-container{
+    display: flex;
+}
+
