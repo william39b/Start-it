@@ -13,7 +13,7 @@
             int[] arr = { 1, 2, 3};
             string text1 = "Hello, World!";
             char text2 = 'B';
-            //test2
+            // test3
             Console.WriteLine(text1);
             Console.ReadLine();
         }
