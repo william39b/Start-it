@@ -18,7 +18,7 @@ void RandomHobby()
             Console.WriteLine("cycling");
             break;
         case 1:
-            Console.WriteLine("jogging");
+            Console.WriteLine("reading");
             break;
         case 2:
             Console.WriteLine("boxing");
@@ -27,9 +27,6 @@ void RandomHobby()
             Console.WriteLine("gaming");
             break;
         case 4:
-            Console.WriteLine("reading");
-            break;
-        case 5:
             Console.WriteLine("trainspottting");
             break;
     }
