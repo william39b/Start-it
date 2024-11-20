@@ -1,7 +1,10 @@
-﻿Console.WriteLine("Type your name: ");
+﻿// Oppgave:
+// Skriv navn inn i konsollen, la en funksjon trekke en tilfeldig hobby og vis dette sammen med navnet i konsollvinduet.
+
+Console.WriteLine("Type your name: ");
 string name = Console.ReadLine();
 
-Console.WriteLine($"Hi my name is {name} and im a ");
+Console.Write($"Hi my name is {name} and my hobby is ");
 RandomHobby();
 
 void RandomHobby()
@@ -12,22 +15,22 @@ void RandomHobby()
     switch (number)
     {
         case 0:
-            Console.WriteLine("0");
+            Console.WriteLine("cycling");
             break;
         case 1:
-            Console.WriteLine("1");
+            Console.WriteLine("jogging");
             break;
         case 2:
-            Console.WriteLine("2");
+            Console.WriteLine("boxing");
             break;
         case 3:
-            Console.WriteLine("3");
+            Console.WriteLine("gaming");
             break;
         case 4:
-            Console.WriteLine("4");
+            Console.WriteLine("reading");
             break;
         case 5:
-            Console.WriteLine("5");
+            Console.WriteLine("trainspottting");
             break;
     }
 
