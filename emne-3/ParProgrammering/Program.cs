@@ -1,4 +1,4 @@
-﻿//1) Reverser stringen!
+﻿// Par-Programmering-1) Reverser stringen!
 
 // Lag et program hvor du kan skrive inn en tekst, og når du sender teksten inn vil du få tilbake teksten reversert.
 // Gjør dette uten å bruke innebygde reverse metoder.
@@ -28,12 +28,11 @@ switch (selectedNumber)
 
 string Reverse()
 {
-    char[] charArr = input.ToCharArray();
     string reversedText = "";
 
-    for (int i = charArr.Length - 1; i >= 0; i--)
+    for (int i = input.Length - 1; i >= 0; i--)
     {
-        reversedText += charArr[i];
+        reversedText += input[i];
     }
     return reversedText;
 }
