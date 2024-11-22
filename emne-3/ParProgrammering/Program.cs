@@ -1,5 +1,6 @@
-﻿// Par-Programmering-1) Reverser stringen!
+﻿// Par-Programmering Oppgave: 1 (William og Kristian)
 
+// Reverser stringen!
 // Lag et program hvor du kan skrive inn en tekst, og når du sender teksten inn vil du få tilbake teksten reversert.
 // Gjør dette uten å bruke innebygde reverse metoder.
 // Bygg videre ved å legge til flere ting man kan gjøre med stringen, eksempel:
