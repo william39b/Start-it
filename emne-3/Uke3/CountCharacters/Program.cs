@@ -3,7 +3,7 @@ var counts = new int[range];
 string text = "something";
 while (!string.IsNullOrWhiteSpace(text))
 {
-    text = Console.ReadLine();
+    text = Console.ReadLine().ToLower();
     foreach (var character in text ?? string.Empty)
     {
         counts[(int)character]++;
