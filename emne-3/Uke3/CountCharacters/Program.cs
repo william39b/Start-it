@@ -14,6 +14,7 @@ while (!string.IsNullOrWhiteSpace(text))
         {
             var character = (char)i;
             Console.WriteLine(character + " - " + counts[i]);
+
         }
     }
 }
