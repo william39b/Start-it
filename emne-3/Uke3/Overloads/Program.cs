@@ -6,8 +6,11 @@
         {
             WelcomeMessage w = new WelcomeMessage();
             
-            Console.WriteLine($"{w.PrintWelcomeMessage()}, {w.Compliment()}"); // Default value
-            Console.WriteLine($"{w.PrintWelcomeMessage()}, {w.Compliment("du er kul")}"); // Overloaded default value
+            Console.WriteLine($"{w.PrintWelcomeMessage()}"); // Without argument
+            Console.WriteLine($"{w.PrintWelcomeMessage("du er kul")}"); // With argument
+
+            Console.WriteLine($"{w.Compliment("du er kul")}");
+            Console.WriteLine($"{w.Compliment()}");
         }   
     }
 
@@ -17,6 +20,12 @@
         {
             return "Hei og velkommen";
         }
+
+        public string PrintWelcomeMessage(string compliment) // Method returning a string argument
+        {
+            return $"Hei og velkommen, {compliment}";
+        }
+
 
         public string Compliment(string compliment = "du er snill") // Method with a default value
         {
