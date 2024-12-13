@@ -8,22 +8,22 @@ namespace Studentadministrasjonssystem
 {
     internal class Student
     {
-        public string Navn;
-        string Alder;
-        string Studieprogram;
-        string StudentID;
+        public string Navn { get; private set; } 
+        public string Alder { get; private set; } 
+        public string Studieprogram { get; private set; }
+        public int StudentID { get; private set; } 
 
-        public List<Fag> _fag = new List<Fag>();
-        public int _karakter;
+        public List<Fag> FagList = new List<Fag>();
+        public List<Karakter> KarakterListe = new List<Karakter>();
 
-
-        public Student(string navn, string alder, string studieprogram, string studentID, List<Fag> fag)
+        public Student(string navn, string alder, string studieprogram, int studentID, List<Fag> fag, List<Karakter> karakterListe)
         {
             Navn = navn;
             Alder = alder;
             Studieprogram = studieprogram;
             StudentID = studentID;
-            _fag = fag;
+            FagList = fag;
+            KarakterListe = karakterListe;
         }
 
         public void SkrivUtInfo()
@@ -34,6 +34,39 @@ namespace Studentadministrasjonssystem
                 $"Alder: {Alder}\n" +
                 $"Studieprogram: {Studieprogram}\n" +
                 $"StudentID: {StudentID}\n");
+            SkrivUtKarakterInfo();
+            Studiepoeng();
+        }
+
+        public void SkrivUtKarakterInfo()
+        {
+            Console.WriteLine("--- Karakterer ---");
+            foreach (Karakter k in KarakterListe)
+            {
+                Console.WriteLine($"{k.Fag.Fagnavn}: {k.Karakterverdi}");
+            }
+            Gjennomsnittskarakter();
+        }
+
+        public void Gjennomsnittskarakter()
+        {
+            double sum = 0;
+            foreach (Karakter k in KarakterListe)
+            {
+                sum += k.Karakterverdi;
+            }
+            double gjennomsnitt = sum / KarakterListe.Count;
+            Console.WriteLine($"Gjennomsnittskarakter: {gjennomsnitt}");
+        }
+
+        public void Studiepoeng()
+        {
+            double sum = 0;
+            foreach (Fag f in FagList)
+            {
+                sum += f.AntallStudiepoeng;
+            }
+            Console.WriteLine($"Totalt antall studiepoeng: {sum}");
         }
 
     }

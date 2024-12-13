@@ -8,11 +8,11 @@ namespace Studentadministrasjonssystem
 {
     internal class Fag
     {
-        string Fagkode;
-        public string Fagnavn;
-        string AntallStudiepoeng;
+        public string Fagkode { get; private set; } 
+        public string Fagnavn {  get; private set; } 
+        public int AntallStudiepoeng { get; private set; }
 
-        public Fag(string fagkode, string fagnavn, string antallStudiepoeng)
+        public Fag(string fagkode, string fagnavn, int antallStudiepoeng)
         {
             Fagkode = fagkode;
             Fagnavn = fagnavn;

@@ -8,24 +8,23 @@ namespace Studentadministrasjonssystem
 {
     internal class Karakter
     {
-        public Student _student;
-        public Fag _fag;
-        string _karakterverdi;
+        public Student Student { get; private set; }
+        public Fag Fag { get; private set; }
+        public double Karakterverdi { get; private set; }
 
-        public Karakter(Student student, Fag fag, string karakterverdi)
+        public Karakter(Fag fag, double karakterverdi)
         {
-            _student = student;
-            _fag = fag;
-            _karakterverdi = karakterverdi;
+            Fag = fag;
+            Karakterverdi = karakterverdi;
         }
 
         public void SkrivUtInfo()
         {
             Console.WriteLine(
                 $"--- Karakter Info ---\n" +
-                $"Student: {_student.Navn}\n" +
-                $"Fag: {_fag.Fagnavn}\n" +
-                $"Karakterverdi: {_karakterverdi}\n");
+                //$"Student: {Student.Navn}\n" +
+                $"Fag: {Fag.Fagnavn}\n" +
+                $"Karakterverdi: {Karakterverdi}\n");
         }
     }
 }
