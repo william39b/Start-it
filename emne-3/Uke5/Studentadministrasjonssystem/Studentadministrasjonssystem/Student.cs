@@ -13,8 +13,8 @@ namespace Studentadministrasjonssystem
         public string Studieprogram { get; private set; }
         public int StudentID { get; private set; } 
 
-        public List<Fag> FagList = new List<Fag>();
-        public List<Karakter> KarakterListe = new List<Karakter>();
+        private List<Fag> FagList = new List<Fag>();
+        private List<Karakter> KarakterListe = new List<Karakter>();
 
         public Student(string navn, string alder, string studieprogram, int studentID, List<Fag> fag, List<Karakter> karakterListe)
         {
