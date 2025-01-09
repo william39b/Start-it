@@ -5,12 +5,10 @@ public class CalculatorTest
     [Test]
     public void Test1()
     {
-        // arrange
-        var calc = new UnitTesting.Calculator();
-        // act
-        var sum = calc.Addition(1, 1);
-        // assert
-        Assert.That(sum, Is.EqualTo(2));
+        
+        var calc = new UnitTesting.Calculator(); // arrange        
+        var sum = calc.Addition(1, 1); // act        
+        Assert.That(sum, Is.EqualTo(2)); // assert
     }
     
     [Test]
