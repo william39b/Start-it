@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BossFightPartTwo
+﻿namespace BossFightPartTwo
 {
     internal class Arena
     {
-        private GameCharacter _hero;
-        private GameCharacter _boss;
-        public Arena(GameCharacter hero, GameCharacter boss)
+        private Hero _hero;
+        private Boss _boss;
+        public Arena(Hero hero, Boss boss)
         {
             _hero = hero;
             _boss = boss;
@@ -39,26 +33,26 @@ namespace BossFightPartTwo
                 Console.ReadKey();
                 Console.Clear();
             }
-            string victory = _boss.Health <= 0 ? $"{_hero.Name} Won!" : $"{_boss.Name} Won!";
-            Console.WriteLine(victory);
+            string winner = _boss.Health <= 0 ? $"{_hero.Name} Won!" : $"{_boss.Name} Won!";
+            Console.WriteLine(winner);
         }
 
         private void ShowStats()
         {
             Console.WriteLine(
                 $"{_hero.Name}{string.Empty.PadLeft(21 - _hero.Name.Length, ' ')}{_boss.Name}\n" +
-                $"{ShowFieldAndValue("Health", _hero.Health, _boss.Health)}\n" +
-                $"{ShowFieldAndValue("Strength", _hero.Strength, _boss.Strength)}\n" +
-                $"{ShowFieldAndValue("Stamina", _hero.Stamina, _boss.Stamina)}");
+                $"{ShowLabelAndValue("Health", _hero.Health, _boss.Health)}\n" +
+                $"{ShowLabelAndValue("Strength", _hero.Strength, _boss.Strength)}\n" +
+                $"{ShowLabelAndValue("Stamina", _hero.Stamina, _boss.Stamina)}");
         }
 
-        private static string ShowFieldAndValue(string label, int heroValue, int bossValue)
+        private static string ShowLabelAndValue(string label, int heroValue, int bossValue)
         {
             int labelWidth = 10;
-            int statsWidth = 10;
+            int valueWidth = 10;
             labelWidth -= label.Length;
-            statsWidth -= Convert.ToString(heroValue).Length;
-            return $"{label}:{string.Empty.PadLeft(labelWidth, ' ')}{heroValue}{string.Empty.PadLeft(statsWidth, ' ')}" +
+            valueWidth -= Convert.ToString(heroValue).Length;
+            return $"{label}:{string.Empty.PadLeft(labelWidth, ' ')}{heroValue}{string.Empty.PadLeft(valueWidth, ' ')}" +
                    $"{label}:{string.Empty.PadLeft(labelWidth, ' ')}{bossValue}";
         }
 

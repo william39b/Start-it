@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace BossFightPartTwo
+﻿namespace BossFightPartTwo
 {
-    internal class GameCharacter
+    internal abstract class GameCharacter
     {
         public string Name { get; private set; }
         public int Health { get; private set; }
-        public int Strength { get; private set; } 
+        public int Strength { get; protected set; } 
         public int Stamina { get; private set; } 
 
-        private int _stamina;
+        private int _baseStamina;
 
         public GameCharacter(string name, int health, int strength, int stamina)
         {
@@ -22,16 +15,12 @@ namespace BossFightPartTwo
             Health = health;
             Strength = strength;
             Stamina = stamina;
-            _stamina = stamina;
+            _baseStamina = stamina;
         }
 
         public void Fight(GameCharacter opponent)
         {
-            if (Stamina <= 0)
-            {
-                Recharge();
-                Console.WriteLine($"{Name} had to recharge!");
-            }
+            if (Stamina <= 0) Recharge();
             else
             {
                 opponent.Health -= Strength;
@@ -42,13 +31,11 @@ namespace BossFightPartTwo
 
         private void Recharge()
         {
-            Stamina += _stamina;
+            Console.WriteLine($"{Name} had to recharge!");
+            Stamina += _baseStamina;
+            
         }
 
-        public void RandomStrengthGenerator()
-        {
-            Random rnd = new Random();
-            Strength = rnd.Next(0, 30);
-        }
+       
     }
 }
