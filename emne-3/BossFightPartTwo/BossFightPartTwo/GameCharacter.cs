@@ -2,11 +2,10 @@
 {
     internal abstract class GameCharacter
     {
-        public string Name { get; private set; }
-        public int Health { get; private set; }
+        public string Name { get; protected set; }
+        public int Health { get; protected internal set; }
         public int Strength { get; protected set; } 
-        public int Stamina { get; private set; } 
-
+        public int Stamina { get; protected set; } 
         private int _baseStamina;
 
         public GameCharacter(string name, int health, int strength, int stamina)
@@ -18,7 +17,7 @@
             _baseStamina = stamina;
         }
 
-        public void Fight(GameCharacter opponent)
+        public virtual void Fight(GameCharacter opponent)
         {
             if (Stamina <= 0) Recharge();
             else
@@ -29,7 +28,7 @@
             }
         }
 
-        private void Recharge()
+        protected void Recharge()
         {
             Console.WriteLine($"{Name} had to recharge!");
             Stamina += _baseStamina;
