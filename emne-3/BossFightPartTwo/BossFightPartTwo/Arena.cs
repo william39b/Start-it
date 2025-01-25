@@ -40,7 +40,7 @@
         private void ShowStats()
         {
             Console.WriteLine(
-                $"{_hero.Name}{string.Empty.PadLeft(21 - _hero.Name.Length, ' ')}{_boss.Name}\n" +
+                $"\n{_hero.Name}{string.Empty.PadLeft(21 - _hero.Name.Length, ' ')}{_boss.Name}\n" +
                 $"{ShowLabelAndValue("Health", _hero.Health, _boss.Health)}\n" +
                 $"{ShowLabelAndValue("Strength", _hero.Strength, _boss.Strength)}\n" +
                 $"{ShowLabelAndValue("Stamina", _hero.Stamina, _boss.Stamina)}");
